@@ -4,6 +4,7 @@ from DATA.Camera import camera
 import DATA.SceneManager as SM
 from DATA.Config import *
 from DATA.Controls import handle_controls
+from DATA.UI import handle
 #-------------> Game Function
 #layer functions
 def update_logic():
@@ -11,12 +12,10 @@ def update_logic():
 def draw_3d():
     pr.begin_mode_3d(camera)
     SM.Handle()
-    pr.draw_grid(10, 1.0)
-
     pr.end_mode_3d()
 
 def draw_UI():
-    pr.draw_text("This is UI text", 10, 10, 20, pr.DARKPURPLE)
+    handle()
 
 #>layered game
 def game_layered():
