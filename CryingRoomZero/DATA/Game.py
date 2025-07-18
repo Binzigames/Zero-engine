@@ -1,0 +1,44 @@
+#-------------> importing
+import pyray as pr
+from DATA.Camera import camera
+import DATA.SceneManager as SM
+from DATA.Config import *
+from DATA.Controls import handle_controls
+#-------------> Game Function
+#layer functions
+def update_logic():
+    handle_controls()
+def draw_3d():
+    pr.begin_mode_3d(camera)
+    SM.Handle()
+    pr.draw_grid(10, 1.0)
+
+    pr.end_mode_3d()
+
+def draw_UI():
+    pr.draw_text("This is UI text", 10, 10, 20, pr.DARKPURPLE)
+
+#>layered game
+def game_layered():
+    update_logic()
+
+    pr.begin_drawing()
+    pr.clear_background(pr.BLACK)
+
+    draw_3d()
+    draw_UI()
+
+    pr.end_drawing()
+
+# > run
+def run():
+    screen_width = Sx
+    screen_height = Sy
+
+    pr.init_window(screen_width, screen_height, Sname)
+    pr.set_target_fps(Sfps)
+
+    while not pr.window_should_close():
+        game_layered()
+
+    pr.close_window()
