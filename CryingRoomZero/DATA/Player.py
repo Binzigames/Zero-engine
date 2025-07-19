@@ -10,11 +10,10 @@ PpositionSet= False
 #-------------> functions
 def set_player_position(pos: pr.Vector3):
     global player_position, PpositionSet
-    if not PpositionSet:
+    if not PpositionSet and pos:
         player_position.x = pos.x
         player_position.y = pos.y
         player_position.z = pos.z
-        print(f"Setting player position to: {player_position}")
         PpositionSet = True
 
 #> colisions
@@ -35,10 +34,14 @@ def can_move_to(pos: pr.Vector3, level_map):
             return False
         if check_x < 0 or check_x >= len(level_map[0]):
             return False
-        if level_map[check_z][check_x] == 1:
+
+        cell = level_map[check_z][check_x]
+        if cell in (1, 3):
             return False
 
     return True
+
+
 
 
 #> movement
