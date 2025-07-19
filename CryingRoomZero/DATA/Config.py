@@ -10,7 +10,7 @@ Sfps = 60
 player_position = pr.Vector3(18, 0.5, 5)
 Px = 0
 Pz = 0
-Pspeed = 1
+Pspeed = 0.1
 Pradius= 0.9
 #-------------> MapConfig
 # m = map
